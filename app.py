@@ -2,7 +2,7 @@ import streamlit as st
 from app_pages.multipage import MultiPage
 
 # load pages scripts
-from app_pages.page_project_summary import page_project_summary_body
+from app_pages.page_summary import page_summary_body
 from app_pages.page_sale_price_correlation_analysis import page_sale_price_correlation_analysis_body
 from app_pages.page_project_price_predictor import page_project_price_predictor_body
 from app_pages.page_project_hypothesis import page_project_hypothesis_body

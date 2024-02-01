@@ -8,7 +8,7 @@ def page_project_hypothesis_body():
     st.write("---")
 
     st.info(
-        f"The project was crated to see what correlations there were between,
+        f"The project was crated to see what correlations there were between,"
         f" the houses features and the sale price."
     )
 
