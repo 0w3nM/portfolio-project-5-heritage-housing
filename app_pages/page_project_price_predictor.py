@@ -1,5 +1,4 @@
 import streamlit as st
-from src.data_management import load_house_data, load_inherited_houses_data, load_pkl_file
 import numpy as np
 import pandas as pd
 
