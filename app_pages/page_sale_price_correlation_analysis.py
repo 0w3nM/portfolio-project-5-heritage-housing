@@ -35,7 +35,7 @@ def page_sale_price_correlation_analysis_body():
         f"understanding how the variables are correlated to the house sale price. \n"
         f"The study shows that the most correlated variable are: **{vars_to_study}**"
     )
-    
+
     st.info(
         f"The plots below show the most correlated attributes associated with the sale price.\n"
         f"* Heatmaps\n"
@@ -54,61 +54,59 @@ def page_sale_price_correlation_analysis_body():
         heat_corr(df=df_corr_spearman, threshold=0.5, figsize=(20, 12), font_annot=15)
 
     if st.checkbox("PPS"):
-        st.write(           
-        df_corr_pearson, df_corr_spearman, pps_matrix = CalculateCorrAndPPS(df)
-        heatmap_pps(df=pps_matrix, threshold=0.15, figsize=(20, 12), font_annot=15)
+        st.write(
+            df_corr_pearson, df_corr_spearman, pps_matrix=CalculateCorrAndPPS(df)
+            heatmap_pps(df=pps_matrix, threshold=0.15, figsize=(20, 12), font_annot=15)
 
-def sale_price_correlation_scatter(df, vars_to_study):
-    target_var = 'SalePrice'
-        fig, axes = plt.subplots(figsize=(10, 5))
-        axes = sns.scatterplot(data=df, x=col, y=target_var')
-        plt.xticks(rotation=90)
-        plt.title(f"{col}", fontsize=20, y=1.05)
-        st.pyplot(fig)
+            def sale_price_correlation_scatter(df, vars_to_study):
+                target_var='SalePrice'
+                fig, axes=plt.subplots(figsize=(10, 5))
+                axes=sns.scatterplot(data=df, x=col, y=target_var')
+                plt.xticks(rotation=90)
+                plt.title(f"{col}", fontsize=20, y=1.05)
+                st.pyplot(fig)
 
-def sale_price_correlation_histogram(df, vars_to_study):
-    target_var = 'SalePrice'
-        fig, axes = plt.subplots(figsize=(10, 5))
-        axes = sns.histplot(data=df, x=col, y=target_var')
-        plt.title(f"{col}", fontsize=20, y=1.05)
-        st.pyplot(fig)
-        
+            def sale_price_correlation_histogram(df, vars_to_study):
+                target_var='SalePrice'
+                fig, axes=plt.subplots(figsize=(10, 5))
+                axes=sns.histplot(data=df, x=col, y=target_var')
+                plt.title(f"{col}", fontsize=20, y=1.05)
+                st.pyplot(fig)
 
-def plot_corr_heatmap(df, threshold, figsize=(20, 12), font_annot=8):
-    if len(df.columns) > 1:
-        mask = np.zeros_like(df, dtype=bool)
-        mask[np.triu_indices_from(mask)] = True
-        mask[abs(df) < threshold] = True
-        fig, axes = plt.subplots(figsize=figsize)
-        sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True,
-                    mask=mask, cmap='viridis', annot_kws={"size": font_annot}, ax=axes,
-                    linewidth=0.5
-                    )
-        axes.set_yticklabels(df.columns, rotation=0)
-        plt.ylim(len(df.columns), 0)
-        plt.show()
-        st.pyplot(fig)
+            def plot_corr_heatmap(df, threshold, figsize=(20, 12), font_annot=8):
+                if len(df.columns) > 1:
+                    mask=np.zeros_like(df, dtype=bool)
+                    mask[np.triu_indices_from(mask)]=True
+                    mask[abs(df) < threshold]=True
+                    fig, axes=plt.subplots(figsize=figsize)
+                    sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True,
+                                mask=mask, cmap='viridis', annot_kws={"size": font_annot}, ax=axes,
+                                linewidth=0.5
+                                )
+                    axes.set_yticklabels(df.columns, rotation=0)
+                    plt.ylim(len(df.columns), 0)
+                    plt.show()
+                    st.pyplot(fig)
 
-def heatmap_pps(df, threshold, figsize=(20, 12), font_annot=8):
-    if len(df.columns) > 1:
-        mask = np.zeros_like(df, dtype=bool)
-        mask[abs(df) < threshold] = True
-        fig, ax = plt.subplots(figsize=figsize)
-        ax = sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True,
-                         mask=mask, cmap='rocket_r', annot_kws={"size": font_annot},
-                         linewidth=0.05, linecolor='grey')
-        plt.ylim(len(df.columns), 0)
-        plt.show()
-        st.pyplot(fig)
+            def heatmap_pps(df, threshold, figsize=(20, 12), font_annot=8):
+            if len(df.columns) > 1:
+                    mask=np.zeros_like(df, dtype=bool)
+                    mask[abs(df) < threshold]=True
+                    fig, ax=plt.subplots(figsize=figsize)
+                    ax=sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True, mask=mask, cmap='rocket_r', annot_kws={"size": font_annot}, linewidth=0.05, linecolor='grey')
+                    plt.ylim(len(df.columns), 0)
+                    plt.show()
+                    st.pyplot(fig)
 
-def calc_pps(df):
-    pps_matirx_raw = pps.matrix(df)
-    pps_matrix = pps_matirx_raw.filter(['x', 'y', 'ppscore']).pivot(columns='x', index='y', values='ppscore')
+            def calc_pps(df):
+                pps_matirx_raw=pps.matrix(df)
+                pps_matrix=pps_matirx_raw.filter(['x', 'y', 'ppscore']).pivot(columns='x', index='y', values='ppscore')
 
-    return df_corr_pearson, df_corr_spearman
+            return df_corr_pearson, df_corr_spearman
 
-def calc_corr(df):
-    df_corr_pearson = df.corr(method="pearson")
-    df_corr_spearman - df.corr(method="spearman")
+            def calc_corr(df):
+                df_corr_pearson=df.corr(method="pearson")
+                df_corr_spearman=df.corr(method="spearman")
 
-    return pps_matrix
+            return pps_matrix
+            )

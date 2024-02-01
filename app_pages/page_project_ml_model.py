@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from src.data_management import load_house_data, load_pkl_file
 from src.evaluate import regression_performance, regression_evaluation, regression_evaluation_plots
 
+
 def page_project_ml_model_body():
 
     version = 'v1'
@@ -21,7 +22,7 @@ def page_project_ml_model_body():
         f"outputs/ml_pipeline/price_predict/{version}/y_test.csv")
 
     st.write("---")
-    
+
     st.write("**ML Model**: Sale Price Performance")
 
     st.write("---")
@@ -61,5 +62,4 @@ def page_project_ml_model_body():
     st.write("* Pipeline Performance")
     regression_performance(X_train, y_train, X_test, y_test, price_predict_pipe)
 
-    
     regression_evaluation_plots(X_train, y_train, X_test, y_test, price_predict_pipe)

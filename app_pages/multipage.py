@@ -1,19 +1,20 @@
 import streamlit as st
+from app_pages.multipage import MultiPage
 
-# Class to generate multiple Streamlit pages using an object oriented approach 
-class MultiPage: 
+# load pages scripts
+from app_pages.page_project_summary import page_project_summary_body
+from app_pages.page_sale_price_correlation_analysis import page_sale_price_correlation_analysis_body
+from app_pages.page_project_price_predictor import page_project_price_predictor_body
+from app_pages.page_project_hypothesis import page_project_hypothesis_body
+from app_pages.page_project_ml_model import page_project_ml_model_body
 
-    def __init__(self, app_name) -> None:
-        self.pages = []
-        self.app_name = app_name
+app = MultiPage(app_name="Heritage Housing Predictor")
 
-        st.set_page_config(
-            page_title=self.app_name) 
-    
-    def add_page(self, title, func) -> None: 
-        self.pages.append({"title": title, "function": func })
+# Add your app pages here using .add_page()
+app.add_page("Project Summary", page_project_summary_body)
+app.add_page("Price Correlation Analysis", page_sale_price_correlation_analysis_body)
+app.add_page("Price Predictor", page_project_price_predictor_body)
+app.add_page("Project Hypothesis", page_project_hypothesis_body)
+app.add_page("ML: Model", page_project_ml_model_body)
 
-    def run(self):
-        st.title(self.app_name)
-        page = st.sidebar.radio('Menu', self.pages, format_func=lambda page: page['title'])
-        page['function']() 
+app.run()

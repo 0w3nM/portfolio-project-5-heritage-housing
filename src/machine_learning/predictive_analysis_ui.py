@@ -1,6 +1,7 @@
 # Import library
 import streamlit as st
 
+
 # Run prediction from pipeline
 def predict_price(X_live, property_features, sale_price_pipeline):
 

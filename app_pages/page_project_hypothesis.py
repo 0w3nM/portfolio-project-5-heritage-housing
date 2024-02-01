@@ -12,8 +12,8 @@ def page_project_hypothesis_body():
         f" the houses features and the sale price."
     )
 
-    st.write("---")    
-    
+    st.write("---")
+
     st.success(
         f"* It is shown in the study that there are 2 variables that have a strong correlation,"
         f" with the sale price **Overall Quality** and **Ground Living Area**."/n
