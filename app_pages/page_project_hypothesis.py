@@ -16,7 +16,7 @@ def page_project_hypothesis_body():
 
     st.success(
         f"* It is shown in the study that there are 2 variables that have a strong correlation,"
-        f" with the sale price **Overall Quality** and **Ground Living Area**."/n
+        f" with the sale price **Overall Quality** and **Ground Living Area**./n"
         f"* Here it shows that houses with larger living facilities and/or have "
         f"a higher overall quality, affect the price of the house. "
     )
