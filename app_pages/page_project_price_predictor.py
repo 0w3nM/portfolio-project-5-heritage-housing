@@ -1,13 +1,14 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+from src.data_management import load_house_data, load_inherited_houses_data, load_pkl_file 
 
 # Load Files
 
 
 def page_project_price_predictor_body():
     version = 'v1'
-    df_inherited_houses_data = load_ingerited_houses_data()
+    df_inherited_houses_data = load_inherited_houses_data()
     sale_pipeline = load_pkl_file(
         f"outputs/ml_pipeline/price_predict/{version}/regressor_pipeline.pkl")
     price_features = (pd.read_csv(f"outputs/ml_pipeline/price_predict/{version}/X_train.csv")
