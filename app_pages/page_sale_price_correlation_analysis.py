@@ -3,13 +3,14 @@ import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
+from src.data_management import load_house_data
 sns.set_style("whitegrid")
 
 
 def page_sale_price_correlation_analysis_body():
 
     # load data
-    df = load_house_prices_data()
+    df = load_house_data()
 
     vars_to_study = ['OverallQual', 'GrLivArea', 'GarageArea',
                      'TotalBsmtSF', 'YearBuilt', '1stFlrSF']
